@@ -10,7 +10,7 @@ export const NavBar = () => {
             <div className="container">
                 <div className={stylles.header__inner}>
                     <div className={stylles.nav__logo}>
-                        Logo TYPE <span>*</span>
+                        Logo TYPE <span style={{color: 'red'}}>*</span>
                     </div>
                     <nav>
                         <ul className={stylles.header__nav}>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import stylles from './Posts.module.scss'
 
 export const Posts = () => {
     const [posts, setPosts] = useState([])
@@ -23,10 +24,10 @@ export const Posts = () => {
     }, [])
 
     return (
-        <div className='page__posts'>
+        <div className={stylles.page__posts}>
             <div className="container">
                 {posts.map((post) => (
-                    <div className="post" key={post.id}>
+                    <div className={stylles.post} key={post.id}>
                         <span>{post.id}</span>
                         <h4>{post.title}</h4>
                         <p>{post.body}</p>

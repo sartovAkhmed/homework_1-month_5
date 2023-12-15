@@ -5,7 +5,7 @@ import stylles from './CreatePosts.module.scss'
 export const CreatePosts = () => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
-    const [getQuery, setGetQuery] = useState(false)
+    // const [getQuery, setGetQuery] = useState(false)
     const [posts, setPosts] = useState([])
     axios.defaults.baseURL = 'https://656c7379e1e03bfd572e5367.mockapi.io/post'
 
@@ -25,10 +25,10 @@ export const CreatePosts = () => {
             }  
         }
         getPosts()
-    }, [getQuery])
+    }, [])
 
     async function handlerSubmit(event) {
-        setGetQuery(!getQuery)
+        // setGetQuery(!getQuery)
         event.preventDefault()
         try {
             await axios({
@@ -38,6 +38,10 @@ export const CreatePosts = () => {
                     body: body
                 }
             })
+            const response = await axios({
+                method: 'GET',
+            })
+            setPosts(response.data)
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.log(error.response?.data.errText, 'error');
@@ -58,9 +62,9 @@ export const CreatePosts = () => {
                         placeholder='enter body' />
                     <button type='submit'>added post</button>
                 </form>
-                <div className="posts">
+                <div className={stylles.posts}>
                     {posts.map((post) => (
-                        <div className="post" key={post.id}>
+                        <div className={stylles.post} key={post.id}>
                             <h4>{post.title}</h4>
                             <p>{post.body}</p>
                         </div>
